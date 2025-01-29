@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExitConfirmationController" alignment="CENTER" spacing="20">
+    <Label text="Are you sure you want to quit?" />
+    <HBox spacing="20">
+        <Button text="Yes, Quit" onAction="#handleExit" />
+        <Button text="No, Return to Game" onAction="#handleReturn" />
+    </HBox>
+</VBox>

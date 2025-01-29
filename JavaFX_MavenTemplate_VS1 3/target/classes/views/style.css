@@ -1,0 +1,84 @@
+/* General Styling for the Poker Table */
+.poker-table {
+    -fx-background-color: #0b3d0b; /* Green table background */
+    -fx-padding: 20;
+    -fx-border-color: #004d00;
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
+}
+
+/* Dealer Label Styling */
+.dealer-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Player Labels */
+.player-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Bet Labels */
+.bet-label, .winnings-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+/* Input Labels */
+.bet-input-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+/* Input Fields */
+.bet-input-field {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-font-size: 14px;
+}
+
+/* Action Buttons */
+.action-button {
+    -fx-background-color: #333333; /* Dark gray button */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #555555;
+    -fx-border-color: #ffcc00;
+}
+
+/* Deal Button */
+.deal-button {
+    -fx-background-color: #004d00;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.deal-button:hover {
+    -fx-background-color: #007a00;
+}
+
+/* Game Info Label */
+.game-info-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-font-style: italic;
+    -fx-padding: 10;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.WinLoseController" style="-fx-background-color: #0b3d0b;">
+    <VBox alignment="CENTER" spacing="20">
+        <!-- Win/Loss Message -->
+        <Label fx:id="winLoseMessageLabel" text="Game Over" style="-fx-font-size: 32px; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+        <!-- Winnings Display -->
+        <Label fx:id="winningsLabel" text="Total Winnings: $0" style="-fx-font-size: 24px; -fx-text-fill: yellow;" />
+
+        <!-- Buttons -->
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Play Again" fx:id="playAgainButton" onAction="#handlePlayAgain" style="-fx-font-size: 18px; -fx-padding: 10 20;" />
+            <Button text="Exit" fx:id="exitButton" onAction="#handleExit" style="-fx-font-size: 18px; -fx-padding: 10 20;" />
+        </HBox>
+    </VBox>
+</StackPane>

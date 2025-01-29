@@ -1,0 +1,7 @@
+controllers/WinLoseController.class
+model/PokerInfo.class
+model/Card.class
+Client.class
+controllers/GamePlayController.class
+JavaFXTemplate.class
+controllers/WelcomeScreenController.class

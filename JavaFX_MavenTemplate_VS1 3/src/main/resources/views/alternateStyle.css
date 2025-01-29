@@ -1,0 +1,94 @@
+/* General Styling for the Poker Table */
+.poker-table {
+    -fx-background-color: #003366; /* UIC blue table background */
+    -fx-padding: 20;
+    -fx-border-color: #C8102E; /* UIC red border */
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
+}
+
+/* Dealer Label Styling */
+.dealer-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF; /* White text for visibility */
+}
+
+/* Player Labels */
+.player-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Bet Labels */
+.bet-label, .winnings-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Input Labels */
+.bet-input-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Input Fields */
+.bet-input-field {
+    -fx-background-color: #FFFFFF; /* White input field */
+    -fx-border-color: #C8102E; /* UIC red border */
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-font-size: 14px;
+    -fx-text-fill: #003366; /* UIC blue text inside */
+}
+
+/* Action Buttons */
+.action-button {
+    -fx-background-color: #C8102E; /* UIC red button */
+    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+    -fx-border-color: #FFFFFF; /* White border */
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #9D0A1E; /* Darker red on hover */
+    -fx-border-color: #FFFFFF;
+}
+
+/* Deal Button */
+.deal-button {
+    -fx-background-color: #003366; /* UIC blue */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+    -fx-border-color: #C8102E; /* UIC red border */
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.deal-button:hover {
+    -fx-background-color: #002147; /* Darker UIC blue */
+}
+
+/* Game Info Label */
+.game-info-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-style: italic;
+    -fx-padding: 10;
+}
+
+/* Poker Cards Styling */
+#dealerCards, #playerOneCards, #playerTwoCards {
+    -fx-border-color: #C8102E; /* UIC red border */
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-background-color: #FFFFFF; /* White background for contrast */
+}

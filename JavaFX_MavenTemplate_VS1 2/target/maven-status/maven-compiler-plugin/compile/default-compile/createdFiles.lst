@@ -1,0 +1,11 @@
+model/Card.class
+model/ThreeCardLogic.class
+model/Dealer.class
+controller/GameStateController.class
+controller/ClientHandler.class
+model/Player.class
+model/Deck.class
+controller/ServerController.class
+server/PokerServer.class
+model/PokerInfo.class
+controller/JavaFXTemplate.class

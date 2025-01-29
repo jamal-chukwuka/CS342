@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameStateController"
+      spacing="10">
+      
+    <!-- Set padding via FXML properly -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label fx:id="activeClientsLabel" text="Active Clients: 0"
+           style="-fx-font-size: 18px; -fx-text-fill: black;" />
+
+    <ListView fx:id="gameLogListView" prefHeight="300" prefWidth="400"/>
+    
+</VBox>

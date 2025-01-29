@@ -1,0 +1,42 @@
+/* UIC THEME - Dark Blue Background with Clean UI */
+.root {
+    -fx-background-color: #1B1B3A;
+    -fx-font-family: "Arial";
+}
+
+/* Title Label */
+.label {
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #0077CC;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #005C99;
+}
+
+/* Input Fields */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #0077CC;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+/* Error Messages */
+.error-label {
+    -fx-text-fill: red;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}

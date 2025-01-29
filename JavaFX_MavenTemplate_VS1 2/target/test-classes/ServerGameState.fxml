@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ServerController">
+    <top>
+        <MenuBar>
+            <Menu text="Options">
+                <MenuItem text="Exit" onAction="#handleExit" />
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Server Running on Port:" fx:id="serverStatusLabel" styleClass="header-label" />
+
+            <ListView fx:id="clientListView" prefHeight="150" />
+            <Label text="Game Log" styleClass="header-label" />
+            <ListView fx:id="gameLogListView" prefHeight="200" />
+
+            <HBox spacing="10">
+                <Button text="Stop Server" onAction="#handleStopServer" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

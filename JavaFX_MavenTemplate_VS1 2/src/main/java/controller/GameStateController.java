@@ -41,19 +41,23 @@ public class GameStateController {
 
         updateClientCount(); // Update active clients count when initializing
 
-        // Track changes in the client list and update the UI dynamically
-        pokerServer.getClients().addListener((ListChangeListener<ClientHandler>) change ->
-            Platform.runLater(this::updateClientCount)
-        );
     }
 
     /**
      * Updates the active client count label dynamically.
      * This method ensures that the label always reflects the correct number of connected clients.
      */
+    /**
+     * Updates the active client count label dynamically.
+     * Ensures the label always reflects the correct number of connected clients.
+     */
     private void updateClientCount() {
         if (pokerServer != null) {
-            activeClientsLabel.setText("Active Clients: " + pokerServer.getClients().size());
+            Platform.runLater(() -> {
+                int activeClients = pokerServer.getConnectedClients().size();
+                activeClientsLabel.setText("Active Clients: " + activeClients);
+            });
         }
     }
+
 }

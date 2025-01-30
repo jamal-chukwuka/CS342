@@ -46,9 +46,6 @@ public class PokerInfo implements Serializable {
     public void setDealerCardsHidden(boolean dealerCardsHidden) {
         this.dealerCardsHidden = dealerCardsHidden;
     }
-
-
-
     /**
      * Default constructor.
      * Initializes empty hands and ensures the game message is never null.
@@ -132,6 +129,24 @@ public class PokerInfo implements Serializable {
     public String getGameMessage() {
         return gameMessage;
     }
+    
+    /**
+     * Determines if this is the start of a new round.
+     * A round is new if the player’s hand is empty.
+     *
+     * @return true if this is a new round, false otherwise.
+     */
+    private boolean newRound = true;
+
+    public boolean isNewRound() {
+        return newRound;
+    }
+
+    public void setNewRound(boolean newRound) {
+        this.newRound = newRound;
+    }
+
+
 
     /**
      * Ensures the game message is never null to avoid potential issues in UI updates.

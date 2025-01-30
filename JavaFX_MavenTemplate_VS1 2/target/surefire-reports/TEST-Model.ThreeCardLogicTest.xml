@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/Users/jamalnezianya/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/jamalnezianya/Desktop/Project 3/JavaFX_MavenTemplate_VS1 2/target/surefire/surefirebooter6949803627890404149.jar /Users/jamalnezianya/Desktop/Project 3/JavaFX_MavenTemplate_VS1 2/target/surefire 2025-01-28T21-02-33_622-jvmRun1 surefire16774014220802322577tmp surefire_05355757426835442141tmp"/>
+    <property name="sun.java.command" value="/Users/jamalnezianya/Desktop/Project 3/JavaFX_MavenTemplate_VS1 2/target/surefire/surefirebooter4800091873160087123.jar /Users/jamalnezianya/Desktop/Project 3/JavaFX_MavenTemplate_VS1 2/target/surefire 2025-01-30T07-34-35_610-jvmRun1 surefire398042662125045358tmp surefire_09583930104933312593tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/jamalnezianya/Desktop/Project 3/JavaFX_MavenTemplate_VS1 2/target/test-classes:/Users/jamalnezianya/Desktop/Project 3/JavaFX_MavenTemplate_VS1 2/target/classes:/Users/jamalnezianya/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.1/junit-jupiter-5.9.1.jar:/Users/jamalnezianya/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/Users/jamalnezianya/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/jamalnezianya/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/Users/jamalnezianya/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/jamalnezianya/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar:/Users/jamalnezianya/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/Users/jamalnezianya/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/Users/jamalnezianya/.m2/repository/org/openjfx/javafx-controls/19.0.2.1/javafx-controls-19.0.2.1.jar:/Users/jamalnezianya/.m2/repository/org/openjfx/javafx-controls/19.0.2.1/javafx-controls-19.0.2.1-mac-aarch64.jar:/Users/jamalnezianya/.m2/repository/org/openjfx/javafx-graphics/19.0.2.1/javafx-graphics-19.0.2.1.jar:/Users/jamalnezianya/.m2/repository/org/openjfx/javafx-graphics/19.0.2.1/javafx-graphics-19.0.2.1-mac-aarch64.jar:/Users/jamalnezianya/.m2/repository/org/openjfx/javafx-base/19.0.2.1/javafx-base-19.0.2.1.jar:/Users/jamalnezianya/.m2/repository/org/openjfx/javafx-base/19.0.2.1/javafx-base-19.0.2.1-mac-aarch64.jar:/Users/jamalnezianya/.m2/repository/org/openjfx/javafx-fxml/19.0.2.1/javafx-fxml-19.0.2.1.jar:/Users/jamalnezianya/.m2/repository/org/openjfx/javafx-fxml/19.0.2.1/javafx-fxml-19.0.2.1-mac-aarch64.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/jamalnezianya/Desktop/Project 3/JavaFX_MavenTemplate_VS1 2/target/surefire/surefirebooter6949803627890404149.jar"/>
+    <property name="surefire.real.class.path" value="/Users/jamalnezianya/Desktop/Project 3/JavaFX_MavenTemplate_VS1 2/target/surefire/surefirebooter4800091873160087123.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.1+11-39"/>
@@ -59,21 +59,21 @@
   </properties>
   <testcase name="testStraight" classname="Model.ThreeCardLogicTest" time="0"/>
   <testcase name="testStraightFlushWinnings" classname="Model.ThreeCardLogicTest" time="0"/>
-  <testcase name="testPlayerWinsStraightFlush" classname="Model.ThreeCardLogicTest" time="0.001"/>
+  <testcase name="testPlayerWinsStraightFlush" classname="Model.ThreeCardLogicTest" time="0"/>
   <testcase name="testFlush" classname="Model.ThreeCardLogicTest" time="0"/>
-  <testcase name="testInvalidSuitHandling" classname="Model.ThreeCardLogicTest" time="0"/>
+  <testcase name="testInvalidSuitHandling" classname="Model.ThreeCardLogicTest" time="0.001"/>
   <testcase name="testPair" classname="Model.ThreeCardLogicTest" time="0"/>
-  <testcase name="testThreeOfAKindWinnings" classname="Model.ThreeCardLogicTest" time="0.001"/>
+  <testcase name="testThreeOfAKindWinnings" classname="Model.ThreeCardLogicTest" time="0"/>
   <testcase name="testPlayerWinsHighCard" classname="Model.ThreeCardLogicTest" time="0"/>
-  <testcase name="testHighCard" classname="Model.ThreeCardLogicTest" time="0.001"/>
-  <testcase name="testDealerWinsHighCard" classname="Model.ThreeCardLogicTest" time="0"/>
-  <testcase name="testEmptyHand" classname="Model.ThreeCardLogicTest" time="0"/>
+  <testcase name="testHighCard" classname="Model.ThreeCardLogicTest" time="0"/>
+  <testcase name="testDealerWinsHighCard" classname="Model.ThreeCardLogicTest" time="0.001"/>
+  <testcase name="testEmptyHand" classname="Model.ThreeCardLogicTest" time="0.001"/>
   <testcase name="testStraightFlush" classname="Model.ThreeCardLogicTest" time="0"/>
   <testcase name="testPairWinnings" classname="Model.ThreeCardLogicTest" time="0"/>
-  <testcase name="testStraightWinnings" classname="Model.ThreeCardLogicTest" time="0.001"/>
+  <testcase name="testStraightWinnings" classname="Model.ThreeCardLogicTest" time="0"/>
   <testcase name="testDealerWinsHigherPair" classname="Model.ThreeCardLogicTest" time="0"/>
   <testcase name="testHighCardNoWinnings" classname="Model.ThreeCardLogicTest" time="0"/>
   <testcase name="testInvalidValueHandling" classname="Model.ThreeCardLogicTest" time="0"/>
-  <testcase name="testThreeOfAKind" classname="Model.ThreeCardLogicTest" time="0.001"/>
+  <testcase name="testThreeOfAKind" classname="Model.ThreeCardLogicTest" time="0"/>
   <testcase name="testFlushWinnings" classname="Model.ThreeCardLogicTest" time="0"/>
 </testsuite>

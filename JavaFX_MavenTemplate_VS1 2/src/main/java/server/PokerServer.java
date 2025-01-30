@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import controller.ClientHandler;
 import javafx.application.Platform;
@@ -14,14 +15,18 @@ import model.PokerInfo;
 
 public class PokerServer {
     private ServerSocket serverSocket;
-    private final ObservableList<ClientHandler> clients = FXCollections.observableArrayList(); // Use ObservableList
+    private final List<ClientHandler> clients = new CopyOnWriteArrayList<>();
     private boolean isRunning = false;
-    private int playerCounter = 1;  // Track player numbers
-
-    // Observable list for server log updates
+    private int currentTurn = 1; // Start with Player 1
+    private int readyPlayers = 0; // Track how many players have acted
     private final ObservableList<String> serverLog = FXCollections.observableArrayList();
+    private int currentTurnPlayer = 1; // Always starts with Player 1
+
     
-    private int readyPlayers = 0;
+
+    public synchronized boolean isGameReady() {
+        return clients.size() == 2;
+    }
 
     public synchronized void incrementReadyPlayers() {
         readyPlayers++;
@@ -34,45 +39,32 @@ public class PokerServer {
     public synchronized int getReadyPlayers() {
         return readyPlayers;
     }
-
-    public int getClientCount() {
-        return clients.size();
+    
+    public synchronized List<ClientHandler> getConnectedClients() {
+        return new ArrayList<>(clients); // Return a copy of the client list
     }
+    
+    private boolean isPlayer1Turn = true; // Track turn using a boolean
 
-    // Notify all players when both are ready
-    public synchronized boolean isGameReady() {
-        return clients.size() == 2;
+    /**
+     * Returns whether it is Player 1's turn.
+     */
+    public synchronized boolean isPlayer1Turn() {
+        return isPlayer1Turn;
     }
+    
+    
 
-    public void broadcastToPlayers(PokerInfo info) {
+    public synchronized void broadcastToPlayers(PokerInfo info) {
         if (!isGameReady()) {
             logGameEvent("Waiting for another player to join...");
-            return;  // Don't send game updates if only one player is connected
+            return;
         }
 
         for (ClientHandler client : clients) {
             client.sendToClient(info);
         }
     }
-    
-    
-//    /**
-//     * Returns the opponent's hand for the given player number.
-//     *
-//     * @param playerNumber The player requesting the opponent's hand (1 or 2).
-//     * @return The opponent's hand as an ArrayList of Cards, or an empty list if no opponent is found.
-//     */
-//    public synchronized ArrayList<Card> getOpponentHand(int playerNumber) {
-//        for (ClientHandler client : clients) {
-//            if (client.getPlayerNumber() != playerNumber) { // Find the opponent
-//                return client.getPlayerHand();  // Return the opponent's hand
-//            }
-//        }
-//        return new ArrayList<>(); // Return an empty list if opponent is not found
-//    }
-
-  
-
 
     public void startServer(int port) {
         try {
@@ -82,18 +74,24 @@ public class PokerServer {
 
             while (isRunning) {
                 Socket clientSocket = serverSocket.accept();
-                logGameEvent("New client connected: " + clientSocket.getInetAddress());
-                
-             // Assign Player 1 or Player 2
-                int assignedPlayerNumber = playerCounter;
-                playerCounter++;
-                if (playerCounter > 2) {
-                    playerCounter = 1; // Reset after two players
+
+                // Prevent extra clients from joining
+                if (clients.size() >= 2) {
+                    logGameEvent("New connection attempt rejected: Max players reached.");
+                    clientSocket.close();
+                    continue;
                 }
 
-                ClientHandler clientHandler = new ClientHandler(clientSocket, this, assignedPlayerNumber);
+                logGameEvent("New client connected: " + clientSocket.getInetAddress());
+
+                ClientHandler clientHandler = new ClientHandler(clientSocket, this, clients.size() + 1);
                 clients.add(clientHandler);
                 new Thread(clientHandler).start();
+
+                if (isGameReady()) {
+                    logGameEvent("Both players connected. Starting game...");
+                    currentTurn = 1;
+                }
             }
         } catch (IOException e) {
             logGameEvent("Error starting server: " + e.getMessage());
@@ -123,12 +121,44 @@ public class PokerServer {
         logGameEvent("Client disconnected. Active clients: " + clients.size());
 
         if (clients.size() < 2) {
-            logGameEvent("Game paused. Waiting for another player to join...");
+            logGameEvent("Game paused. Waiting for another player...");
+            currentTurn = 0;
         }
     }
     
-    
+    /**
+     * Gets the opponent's ClientHandler.
+     * @param currentPlayer The current player's ClientHandler.
+     * @return The opponent's ClientHandler, or null if no opponent exists.
+     */
+    public synchronized ClientHandler getOpponentHandler(ClientHandler currentPlayer) {
+        for (ClientHandler client : clients) {
+            if (client != currentPlayer) {
+                return client;
+            }
+        }
+        return null;
+    }
 
+
+    /**
+     * Switches turn between Player 1 and Player 2.
+     */
+    public synchronized void switchTurn() {
+        if (clients.size() == 2) {
+            currentTurnPlayer = (currentTurnPlayer == 1) ? 2 : 1;
+            logGameEvent("Turn switched. Now Player " + currentTurnPlayer + "'s turn.");
+        }
+    }
+
+    
+    public synchronized int getCurrentTurnPlayer() {
+        return currentTurnPlayer;
+    }
+
+    public synchronized int getCurrentTurn() {
+        return currentTurn;
+    }
 
     public synchronized void logGameEvent(String message) {
         Platform.runLater(() -> serverLog.add(message));
@@ -139,14 +169,31 @@ public class PokerServer {
         return serverLog;
     }
 
-    public ObservableList<ClientHandler> getClients() {
-        return clients;  // Returns an ObservableList
-    }
-    
     public synchronized void addClient(ClientHandler clientHandler) {
         clients.add(clientHandler);
         System.out.println("New client connected. Active clients: " + clients.size());
     }
     
-    
+    public synchronized boolean isGameThreadRunning(Thread gameThread) {
+        return gameThread != null && gameThread.isAlive();
+    }
+
+    /**
+     * Returns the opponent's hand for the given player number.
+     *
+     * @param requestingPlayer The player requesting the opponent's hand.
+     * @return The opponent's PokerInfo containing their hand, or null if no opponent exists.
+     */
+    public synchronized PokerInfo getOpponentHand(int requestingPlayer) {
+        if (!isGameReady()) return null;
+
+        for (ClientHandler client : clients) {
+            if (client.getPlayerNumber() != requestingPlayer) {
+                PokerInfo opponentInfo = new PokerInfo();
+                opponentInfo.setPlayerHand(client.getPlayer().getHand());
+                return opponentInfo;
+            }
+        }
+        return null;
+    }
 }

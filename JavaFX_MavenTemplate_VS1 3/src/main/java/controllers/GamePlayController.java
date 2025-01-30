@@ -148,66 +148,41 @@ public class GamePlayController {
     private void updateUI(PokerInfo info) {
         if (info == null) return;
 
-        System.out.println("Updating UI - Player " + playerNumber + " received game update.");
-
-        // Display which player is which
-     // Show Play and Fold buttons ONLY for the current player
-        if (info.getCurrentTurn() == playerNumber) {
-            playButton.setDisable(false);
-            foldButton.setDisable(false);
-        } else {
-            playButton.setDisable(true);
-            foldButton.setDisable(true);
-        }
-
-
-        // Update game information
         playerBetLabel.setText(String.format("Ante: $%d | Pair Plus: $%d | Play: $%d", 
                         info.getAnteBet(), info.getPairPlusBet(), info.getPlayBet()));
         playerWinningsLabel.setText("Total Winnings: $" + info.getTotalWinnings());
         gameInfoLabel.setText(info.getGameMessage());
 
-        // Display the player's cards
-        if (info.getPlayerHand() != null && !info.getPlayerHand().isEmpty()) {
-            updateCards(playerCardsBox, info.getPlayerHand());
-        } else {
-            System.err.println("Warning: Player's hand is empty in updateUI.");
-        }
+        updateCards(playerCardsBox, info.getPlayerHand());
+        updateCards(opponentCardsBox, info.getOpponentHand());
 
-        // Display the opponent's cards (if they have played)
-        if (info.getOpponentHand() != null && !info.getOpponentHand().isEmpty()) {
-            updateCards(opponentCardsBox, info.getOpponentHand());
-        } else {
-            System.err.println("Warning: Opponent's hand is empty in updateUI.");
-        }
-
-     // Reveal dealer's cards once any player has played or folded
         if (!info.isDealerCardsHidden()) {
-            System.out.println("[CLIENT] Revealing dealer's cards.");
             updateCards(dealerCardsBox, info.getDealerHand());
         } else {
-            showFaceDownCards(dealerCardsBox, 3); // Keep face-down until ready
+            showFaceDownCards(dealerCardsBox, 3);
         }
-
     }
-
-
-
-
-    
-    
-    
 
     
     private void showFaceDownCards(HBox cardBox, int count) {
         cardBox.getChildren().clear();
+        
+        String imagePath = "/views/cards/Sparky.jpeg"; // Ensure the correct path
+        URL imageUrl = getClass().getResource(imagePath);
+
+        if (imageUrl == null) {
+            System.err.println("Error: Card back image not found! " + imagePath);
+            return; // Avoid NullPointerException
+        }
+
         for (int i = 0; i < count; i++) {
-            ImageView cardBack = new ImageView(new Image(getClass().getResource(Card.getCardBackPath()).toExternalForm()));
+            ImageView cardBack = new ImageView(new Image(imageUrl.toExternalForm()));
             cardBack.setFitWidth(100);
             cardBack.setPreserveRatio(true);
             cardBox.getChildren().add(cardBack);
         }
     }
+
     
     /**
      * Switches to the Win/Loss screen with game results.
